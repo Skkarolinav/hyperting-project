@@ -8,23 +8,20 @@ import GetCurrenciesPage from '../main/content/getCurrenciesPage/GetCurrenciesPa
 import GetPairsPage from '../main/content/getPairsPage/GetPairsPage'
 
 const Routing = (props) => {
-
-    
-// console.log(props.currencies)
+    console.log(props.currencies)
     return ( 
-
          <Switch>
              <Route path='/' exact component={HomePage}/>
-                 <Route path='/currencies'  component={GetCurrenciesPage} downArr={props.currencies} columnDefs={props.columnDefs}/>
-                 <Route path='/pairs'  component={GetPairsPage}  downArr={props.pairs} columnDefs={props.columnDefsPairs}/> 
+                 <Route 
+                    path='/currencies' component={GetCurrenciesPage}  />
+                 <Route path='/pairs' component={GetPairsPage} /> 
              <Route  component={ErrorPage}/> 
           </Switch> 
-
         // <>
         //  <GetCurrenciesPage downArr={props.currencies} columnDefs={props.columnDefs}/>
         //  <GetPairsPage downArr={props.pairs} columnDefs={props.columnDefsPairs}/> 
         // </>
-     );
+    );
 }
  
 export default Routing;
