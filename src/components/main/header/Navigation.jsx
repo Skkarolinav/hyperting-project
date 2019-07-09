@@ -1,13 +1,14 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 
-const Navigation =(props) =>{
+const Navigation =() =>{
     return(
       <div>
-        {/* <button onClick={props.handleFechCurrencies}>Download Curr</button>
-        <button onClick={props.handleFechPairs}>Download Pairs</button> */}
-        <NavLink to={'/currencies'} >Get Currencies</NavLink>
-        <NavLink to={'/pairs'} >Get Pairs</NavLink>
+        <nav className="navbar navbar-light bg-light">
+        <NavLink type="button" className="btn btn-primary my-btn" to={'/currencies'}>Get Currencies</NavLink>        
+        <NavLink type="button" className="btn btn-primary my-btn" to={'/'}>Home</NavLink>
+        <NavLink type="button" className="btn btn-primary my-btn" to={'/pairs'} >Get Pairs</NavLink>
+        </nav>
       </div>
     )
 }

@@ -5,120 +5,57 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 
-// const GetPairsPage = (props) => {
-//   console.log(props.downArr + ' downArr GetPairsPage')
-//   console.log(props.columnDefs + ' columnDefs GetPairsPage')
-//   return ( 
-//     <div className='ag-theme-balham-dark'
-//       style={{
-//         height:'100vh',
-//         widht:'100vw'
-//       }}>
-//       <AgGridReact 
-//         columnDefs={props.columnDefs}
-//         rowData={props.pairs}>
-//         </AgGridReact>
-//     </div>
-//   );
-// }
-
-//   export default GetPairsPage;
-
 
 const GetPairsAPI = 'https://api.nexchange.io/en/api/v1/pair/';
 
 class GetCurrenciesPage extends Component {
   state = { 
-    currencies:[],
     pairs:[],
-
-    columnDefs: [
-      {
-        headerName: "Code", 
-        field: "code"
-      }, 
-      {
-        headerName: "Name", 
-        field: "name"
-      }, 
-      {
-        headerName: "Min_Confirmations", 
-        field: "min_confirmations",
-        sortable: true 
-      },
-      {
-        headerName: "Is_Crypto", 
-        field: "is_crypto",
-        sortable: true 
-      },
-      {
-        headerName: "Minimal_Amount", 
-        field: "minimal_amount",
-        sortable: true 
-      },
-      {
-        headerName: "Is_Base_Of_Enabled_Pair", 
-        field: "is_base_of_enabled_pair"
-      },
-      {
-        headerName: "Is_Quote_Of_Enabled_Pair", 
-        field: "is_quote_of_enabled_pair"
-      },
-      {
-        headerName: "Has_Enabled_Pairs", 
-        field: "has_enabled_pairs"
-      },
-      {
-        headerName: "Is_Crypto", 
-        field: "is_crypto",
-        filter: true 
-      },
-      {
-        headerName: "Withdrawal_Fee", 
-        field: "withdrawal_fee",
-        sortable: true,
-        filter: true
-      }
-    ],
+    reFresh:[],
 
     columnDefsPairs:[
       {
-        headerName: "name", 
-        field: "name"
+        headerName: "Name", 
+        field: "name",
+        filter: true 
       }, 
       {
-        headerName: "base", 
-        field: "base"
+        headerName: "Base", 
+        field: "base",
+        filter: true 
       }, 
       {
-        headerName: "quote", 
+        headerName: "Quote", 
         field: "quote",
         sortable: true 
       },
       {
-        headerName: "fee_ask", 
+        headerName: "Fee_ask", 
         field: "fee_ask",
         sortable: true 
       },
       {
-        headerName: "fee_bid", 
+        headerName: "Fee_bid", 
         field: "fee_bid",
         sortable: true 
       },
       {
-        headerName: "disabled", 
-        field: "disabled"
+        headerName: "Disabled", 
+        field: "disabled",
+        filter: true 
       },
       {
-        headerName: "test_mode", 
-        field: "test_mode"
+        headerName: "Test_mode", 
+        field: "test_mode",
+        filter: true 
       },
       {
-        headerName: "orderbook_enabled", 
-        field: "orderbook_enabled"
+        headerName: "Orderbook_enabled", 
+        field: "orderbook_enabled",
+        filter: true 
       },
       {
-        headerName: "reverse_orderbook_enabled", 
+        headerName: "Reverse_orderbook_enabled", 
         field: "reverse_orderbook_enabled",
         filter: true 
       },
@@ -131,20 +68,53 @@ class GetCurrenciesPage extends Component {
       if(response.ok){
         return response
       }
-      throw Error('There was an error accessing the data.')
+      throw Error(response.statusText)
     })
     .then(response => response.json())
     .then(data => {
       this.setState({
-        pairs: data
+        pairs: data,
+        reFresh:data
       })
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error, 'There was an error accessing the data.'))
+    console.log('1. componentDidMount')
   }
 
+  componentDidUpdate(){
+    console.log('2. Update przed setInterval')
+    setInterval(this.fechData,30000)
+    setInterval(()=>{console.log('Update pracuje')},30000)
+    console.log('3. componentDidUpdate')
+  }
+
+fetchData = () =>{
+  fetch(GetPairsAPI)
+  .then(response => response.json())
+  .then(data => this.setState({ reFresh:data }));
+  console.log('2. feczowanie danych')
+}
+
+handleReFresh = () =>{
+  console.log(this.state.reFresh)
+  if(this.state.pairs !==this.state.reFresh){
+    console.log('Klik: dane podmienione ')
+    this.setState({
+      pairs:this.state.reFresh
+    })
+  }else{
+    console.log('Klik: dane nie podmienione ')
+  }
+}
 
   render() { 
     return (
+      <>
+
+      <div>
+      <button onClick={this.handleReFresh}>Refresh pairs</button>
+      </div>
+
           <div className='ag-theme-balham-dark'
       style={{
         height:'100vh',
@@ -155,6 +125,7 @@ class GetCurrenciesPage extends Component {
         rowData={this.state.pairs}>
         </AgGridReact>
     </div>
+    </>
       );
   }
 }
