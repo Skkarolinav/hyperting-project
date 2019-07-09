@@ -1,7 +1,11 @@
 @import './App.css';
+@import './components/main/header/Title.css';
 @import './components/main/header/Navigation.css';
 @import './components/main/content/homePage/HomePage.css';
 @import './components/main/content/getCurrenciesPage/GetCurrenciesPage.css';
 @import './components/main/content/getPairsPage/GetPairsPage.css';
 @import './components/main/content/errorPage/ErrorPage.css';
 @import './components/main/footer/Footer.css';
+
+@import '../node_modules/ag-grid-community/dist/styles/ag-grid.css';
+@import '../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css';

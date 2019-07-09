@@ -1,133 +1,52 @@
 import React,{Component} from 'react';
+import {AgGridReact} from 'ag-grid-react';
 
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
-
-
-const GetPairsAPI = 'https://api.nexchange.io/en/api/v1/pair/';
+import {getPairsData} from '../../../repository/DataRepository';
+import {columnDefs} from './Columns';
 
 class GetCurrenciesPage extends Component {
   state = { 
+    time: new Date().toLocaleString(),
     pairs:[],
     reFresh:[],
-
-    columnDefsPairs:[
-      {
-        headerName: "Name", 
-        field: "name",
-        filter: true 
-      }, 
-      {
-        headerName: "Base", 
-        field: "base",
-        filter: true 
-      }, 
-      {
-        headerName: "Quote", 
-        field: "quote",
-        sortable: true 
-      },
-      {
-        headerName: "Fee_ask", 
-        field: "fee_ask",
-        sortable: true 
-      },
-      {
-        headerName: "Fee_bid", 
-        field: "fee_bid",
-        sortable: true 
-      },
-      {
-        headerName: "Disabled", 
-        field: "disabled",
-        filter: true 
-      },
-      {
-        headerName: "Test_mode", 
-        field: "test_mode",
-        filter: true 
-      },
-      {
-        headerName: "Orderbook_enabled", 
-        field: "orderbook_enabled",
-        filter: true 
-      },
-      {
-        headerName: "Reverse_orderbook_enabled", 
-        field: "reverse_orderbook_enabled",
-        filter: true 
-      },
-    ]
   }
 
-    componentDidMount(){
-    fetch(GetPairsAPI)
-    .then(response => {
-      if(response.ok){
-        return response
-      }
-      throw Error(response.statusText)
-    })
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        pairs: data,
-        reFresh:data
-      })
-    })
-    .catch(error => console.log(error, 'There was an error accessing the data.'))
-    console.log('1. componentDidMount')
-  }
+  async componentDidMount(){
+    const data = await getPairsData();
 
-  componentDidUpdate(){
-    console.log('2. Update przed setInterval')
-    setInterval(this.fechData,30000)
-    setInterval(()=>{console.log('Update pracuje')},30000)
-    console.log('3. componentDidUpdate')
-  }
-
-fetchData = () =>{
-  fetch(GetPairsAPI)
-  .then(response => response.json())
-  .then(data => this.setState({ reFresh:data }));
-  console.log('2. feczowanie danych')
-}
-
-handleReFresh = () =>{
-  console.log(this.state.reFresh)
-  if(this.state.pairs !==this.state.reFresh){
-    console.log('Klik: dane podmienione ')
     this.setState({
-      pairs:this.state.reFresh
+      currencies: data,
+      reFresh:data
     })
-  }else{
-    console.log('Klik: dane nie podmienione ')
   }
-}
+
+  handleRefresh = async() =>{
+    const data = await getPairsData();
+    const refreshTime = new Date().toLocaleString()
+
+    this.setState({
+      currencies:data,
+      time: refreshTime
+    })
+  }
 
   render() { 
     return (
       <>
-
-      <div>
-      <button onClick={this.handleReFresh}>Refresh pairs</button>
-      </div>
-
-          <div className='ag-theme-balham-dark'
-      style={{
-        height:'100vh',
-        widht:'100vw'
-      }}>
-      <AgGridReact 
-        columnDefs={this.state.columnDefsPairs}
-        rowData={this.state.pairs}>
-        </AgGridReact>
-    </div>
-    </>
-      );
+        <div className='d-flex justify-content-around align-items-center border border-success'>
+          {this.state.currencies ? <p className='pairs-description'>Pairs Data Spreadsheet</p>: null}
+          <button type='button' className='btn btn-success pairs-btn' onClick={this.handleRefresh}>Refresh</button>
+          <p className='pairs-description'>{this.state.time}</p>
+        </div>
+        <div className='ag-theme-balham' style={{height:'75vh', widht:'100vw'}}>
+          <AgGridReact 
+            columnDefs={columnDefs}
+            rowData={this.state.currencies}>
+          </AgGridReact>
+        </div>
+      </>
+    );
   }
 }
- 
+
 export default GetCurrenciesPage;

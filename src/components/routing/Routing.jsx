@@ -6,8 +6,7 @@ import GetCurrenciesPage from '../main/content/getCurrenciesPage/GetCurrenciesPa
 import GetPairsPage from '../main/content/getPairsPage/GetPairsPage'
 import ErrorPage from '../main/content/errorPage/ErrorPage'
 
-const Routing = (props) => {
-    console.log(props.currencies)
+const Routing = () => {
     return ( 
         <Switch>
             <Route path='/' exact component={HomePage}/>
