@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when there are no items 1`] = `
+<div
+  className="app"
+>
+  <header>
+    <div
+      className="row d-flex justify-content-center title-panel"
+    >
+      Cryptocurrency Data Displayer
+    </div>
+    <div>
+      <nav
+        className="d-flex justify-content-center navigation-panel"
+      >
+        <a
+          aria-current={null}
+          className="btn btn-primary navigation-btn"
+          href="/currencies"
+          onClick={[Function]}
+          type="button"
+        >
+          Get Currencies
+        </a>
+        <a
+          aria-current="page"
+          className="btn btn-primary navigation-btn active"
+          href="/"
+          onClick={[Function]}
+          style={Object {}}
+          type="button"
+        >
+          Home
+        </a>
+        <a
+          aria-current={null}
+          className="btn btn-primary navigation-btn"
+          href="/pairs"
+          onClick={[Function]}
+          type="button"
+        >
+          Get Pairs
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div
+      className="home-panel-master row d-flex justify-content-center"
+    >
+      <div
+        className="text-center home-panel"
+      >
+        This simple application enables a real-time displaying of the two sets of the data of cryptocurrencies.
+      </div>
+      <div
+        className="text-center home-panel"
+      >
+        Get Currencies provides the currencies of cryptocurrencies as well as non-crypto currencies. Get Pairs provides the pairs of the listed currencies.
+      </div>
+      <div
+        className="text-center home-panel"
+      >
+        The aim of this project was to fetch the data from the public API (https://nexchange2.docs.apiary.io) and present two spreadsheets of data in a table.
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div
+      className="footer-panel"
+    >
+      Developed by Karolina Banasiewicz
+    </div>
+  </footer>
+</div>
+`;
