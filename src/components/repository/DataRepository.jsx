@@ -9,7 +9,7 @@ const getData = async(url) => {
         }
         throw new Error(response.status)  
       } catch(error) {
-          alert(`There was an error accessing the data: ${error}` )
+          alert(`There was an error accessing the data: ${error}.` )
         }
 }
 

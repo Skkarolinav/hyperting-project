@@ -7,7 +7,7 @@
     font-family: 'Times New Roman', Times, serif
 }
 
-header {
+header{
     flex-basis: auto;
     position: relative;
     overflow: hidden;
@@ -17,6 +17,6 @@ main{
     flex-grow: 1;
 }
 
-footer {
+footer{
     border-top: 2px solid rgba(190, 190, 190, 0.329);
 }

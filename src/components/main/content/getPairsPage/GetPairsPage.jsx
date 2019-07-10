@@ -8,7 +8,6 @@ class GetCurrenciesPage extends Component {
   state = { 
     time: new Date().toLocaleString(),
     pairs:[],
-    reFresh:[],
   }
 
   async componentDidMount(){
@@ -16,13 +15,12 @@ class GetCurrenciesPage extends Component {
 
     this.setState({
       currencies: data,
-      reFresh:data
     })
   }
 
   handleRefresh = async() =>{
     const data = await getPairsData();
-    const refreshTime = new Date().toLocaleString()
+    const refreshTime = new Date().toLocaleString();
 
     this.setState({
       currencies:data,
@@ -34,7 +32,7 @@ class GetCurrenciesPage extends Component {
     return (
       <>
         <div className='d-flex justify-content-around align-items-center border border-success'>
-          {this.state.currencies ? <p className='pairs-description'>Pairs Data Spreadsheet</p>: null}
+          <p className='pairs-description'>Pairs Data Spreadsheet</p>
           <button type='button' className='btn btn-success pairs-btn' onClick={this.handleRefresh}>Refresh</button>
           <p className='pairs-description'>{this.state.time}</p>
         </div>

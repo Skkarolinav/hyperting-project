@@ -1,8 +1,10 @@
 .currencies-btn{
     width: 200px;
+    margin: 5px 0;
 }
 
 .currencies-description{
     width:300px;
     font-size:20px;
+    margin: 0 2%;
 }

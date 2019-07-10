@@ -2,26 +2,28 @@ export const columnDefs = [
   {
     headerName: 'Code', 
     field: 'code',
-    filter: true ,
-    width: 90,
+    sortable: true,
+    filter: true,
   }, 
   {
     headerName: 'Name', 
     field: 'name',
-    filter: true ,
-    width: 100,
+    sortable: true,
+    filter: true,
   }, 
   {
     headerName: 'Min_Confirmations', 
     field: 'min_confirmations',
     filter: true ,
-    sortable: true 
+    sortable: true,
+    width: 150,
   },
   {
     headerName: 'Is_Crypto', 
     field: 'is_crypto',
     filter: true ,
-    sortable: true 
+    sortable: true,
+    width: 150,
   },
   {
     headerName: 'Minimal_Amount', 
@@ -32,22 +34,30 @@ export const columnDefs = [
   {
     headerName: 'Is_Base_Of_Enabled_Pair', 
     field: 'is_base_of_enabled_pair',
-    filter: true 
+    sortable: true,
+    filter: true,
+    width: 150,
   },
   {
     headerName: 'Is_Quote_Of_Enabled_Pair', 
     field: 'is_quote_of_enabled_pair',
-    filter: true 
+    sortable: true,
+    filter: true,
+    width: 150,
   },
   {
     headerName: 'Has_Enabled_Pairs', 
     field: 'has_enabled_pairs',
-    filter: true 
+    sortable: true,
+    filter: true,
+    width: 150,
   },
   {
     headerName: 'Is_Crypto', 
     field: 'is_crypto',
-    filter: true ,
+    sortable: true,
+    filter: true,
+    width: 150,
     
   },
   {
@@ -55,6 +65,5 @@ export const columnDefs = [
     field: 'withdrawal_fee',
     sortable: true,
     filter: true,
-    width: 100,
   }
 ]

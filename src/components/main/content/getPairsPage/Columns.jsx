@@ -2,48 +2,59 @@ export const columnDefs = [
     {
         headerName: 'Name', 
         field: 'name',
+        sortable: true,
         filter: true,
-        width: 90,
     }, 
     {
         headerName: 'Base', 
         field: 'base',
-        filter: true 
+        sortable: true,
+        filter: true,
     }, 
     {
         headerName: 'Quote', 
         field: 'quote',
-        sortable: true 
+        sortable: true,
+        filter: true,
     },
     {
         headerName: 'Fee_ask', 
         field: 'fee_ask',
-        sortable: true 
+        sortable: true,
+        filter: true,
     },
     {
         headerName: 'Fee_bid', 
         field: 'fee_bid',
-        sortable: true 
+        sortable: true,
+        filter: true,
     },
     {
         headerName: 'Disabled', 
         field: 'disabled',
-        filter: true 
+        sortable: true,
+        filter: true,
+        width: 175,
     },
     {
         headerName: 'Test_mode', 
         field: 'test_mode',
-        filter: true 
+        sortable: true,
+        filter: true,
+        width: 175,
     },
     {
         headerName: 'Orderbook_enabled', 
         field: 'orderbook_enabled',
-        filter: true 
+        sortable: true,
+        filter: true,
+        width: 175,
     },
     {
         headerName: 'Reverse_orderbook_enabled', 
         field: 'reverse_orderbook_enabled',
+        sortable: true,
         filter: true,
-        width: 100, 
+        width: 175,
     },
 ]

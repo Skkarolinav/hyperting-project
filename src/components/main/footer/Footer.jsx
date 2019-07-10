@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className='footer-panel'>
-            Footer
+            Developed by Karolina Banasiewicz
         </div>
     );
 }
