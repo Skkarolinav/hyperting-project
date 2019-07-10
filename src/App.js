@@ -8,7 +8,7 @@ import Footer from './components/main/footer/Footer';
 
 const App = () => {
   return ( 
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div className='app'>
         <header>
           <Title />
