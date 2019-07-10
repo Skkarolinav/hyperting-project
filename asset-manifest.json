@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/hyperting-project/static/css/main.d133d8a3.chunk.css",
+    "main.js": "/hyperting-project/static/js/main.6f23f999.chunk.js",
+    "main.js.map": "/hyperting-project/static/js/main.6f23f999.chunk.js.map",
+    "runtime~main.js": "/hyperting-project/static/js/runtime~main.513e8b51.js",
+    "runtime~main.js.map": "/hyperting-project/static/js/runtime~main.513e8b51.js.map",
+    "static/css/2.dd501b90.chunk.css": "/hyperting-project/static/css/2.dd501b90.chunk.css",
+    "static/js/2.933f44a1.chunk.js": "/hyperting-project/static/js/2.933f44a1.chunk.js",
+    "static/js/2.933f44a1.chunk.js.map": "/hyperting-project/static/js/2.933f44a1.chunk.js.map",
+    "index.html": "/hyperting-project/index.html",
+    "precache-manifest.b4311465da7ebeb44b1b8cafd0e05ac0.js": "/hyperting-project/precache-manifest.b4311465da7ebeb44b1b8cafd0e05ac0.js",
+    "service-worker.js": "/hyperting-project/service-worker.js",
+    "static/css/2.dd501b90.chunk.css.map": "/hyperting-project/static/css/2.dd501b90.chunk.css.map",
+    "static/css/main.d133d8a3.chunk.css.map": "/hyperting-project/static/css/main.d133d8a3.chunk.css.map"
+  }
+}
