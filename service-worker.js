@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hyperting-project/precache-manifest.b4311465da7ebeb44b1b8cafd0e05ac0.js"
+  "/hyperting-project/precache-manifest.44232779dac4f6239a2af3be3896e10d.js"
 );
 
 self.addEventListener('message', (event) => {
